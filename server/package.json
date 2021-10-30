@@ -1,0 +1,23 @@
+{
+  "name": "desafio-sharenergy-2021-22",
+  "version": "1.0.0",
+  "description": "Esse repositório se destina aos interessados em participar do processo seletivo da SHARENERGY 2021/22. As vagas são voltadas para desenvolvedores de aplicativos Web.",
+  "main": "index.js",
+  "scripts": {
+    "server": "json-server --watch dadosClientes.json --port 5000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paulo-cds/desafio-sharenergy-2021-22.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Paulo-cds/desafio-sharenergy-2021-22/issues"
+  },
+  "homepage": "https://github.com/Paulo-cds/desafio-sharenergy-2021-22#readme",
+  "dependencies": {
+    "json-server": "^0.17.0",
+    "react-router-dom": "^5.3.0"
+  }
+}

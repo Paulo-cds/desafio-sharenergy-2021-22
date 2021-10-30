@@ -1,0 +1,21 @@
+.home{
+    width: 90%;
+    align-items:center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.home .buttonAdd{
+    margin: 2rem auto;
+    height: 50px;
+}
+
+.containerCards{
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 1rem auto;
+    
+}
+

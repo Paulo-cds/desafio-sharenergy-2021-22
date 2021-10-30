@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": 2,
+      "numeroCliente": 2,
+      "nomeCliente": "João Santos",
+      "usinas": [
+        {
+          "usinaId": 1,
+          "percentualDeParticipacao": 20
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "numeroCliente": 3,
+      "nomeCliente": "Maria Coelho",
+      "usinas": [
+        {
+          "usinaId": 1,
+          "percentualDeParticipacao": 50
+        }
+      ]
+    },
+    {
+      "id": 342,
+      "numeroCliente": 342,
+      "nomeCliente": "Ciclano",
+      "usinas": [
+        {
+          "usinaId": 3,
+          "percentualDeParticipacao": 10
+        }
+      ]
+    }
+  ]
+}

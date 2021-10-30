@@ -1,0 +1,28 @@
+.cards{
+    margin: 30px 15px;
+    border-radius: 10%;
+    box-shadow: 5px 5px 15px black;        
+    width:fit-content;       
+}
+
+.cards .cardContent{
+    background-color:rgba(64, 115, 163, 0.267);
+    border-radius: 10%;
+    padding: 1rem;      
+}
+
+.cards .cardContent .cardTypography{
+    font-size: 20px;
+    color: black;
+}
+
+.cards .actions{
+    display: flex;
+    width: 100%;
+    justify-content:flex-end;
+}
+
+.cards .actions .icons{
+    margin: 0 5px;
+    cursor: pointer;
+}
