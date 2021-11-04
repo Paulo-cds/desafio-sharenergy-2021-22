@@ -15,12 +15,9 @@ const Default = ({children, theme}) => {
             <Header/>
             <Container
                 className='container'
-                maxWidth='false'
-                style={{
-                    backgroundColor:'theme.palette.background',
-                    width:'100%',                                
-                }}
+                maxWidth='false'           
                 minHeight='100vh'
+                disableGutters
             >
                {children}                
             </Container>            

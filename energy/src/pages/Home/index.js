@@ -79,10 +79,11 @@ const Home = () => {
       <img src='https://files.openstartups.net/uploaded/startupLogos/5a1dbe64b96b57f4f95d363d/logo%20Sharenergy-01.png' />          
       {!admin ?            
         <div className='formLogin'>
+          <h2>Login</h2>
           <Box margin='15px auto' width='60%'>            
             <TextField        
               fullWidth='true'         
-              label="User:" 
+              label="Usuário:" 
               variant="filled" 
               name = 'name' 
               error = {form.name.error}                     
@@ -96,6 +97,7 @@ const Home = () => {
               label="Senha:" 
               variant="filled" 
               name = 'password' 
+              type='password'
               error = {form.password.error}                        
               onChange={handleInputChange}
               required
