@@ -1,51 +1,47 @@
-import * as React from 'react';
-//import Button from '@material/core/Button';
-import Dialog from '@material/core/Dialog';
-import DialogActions from '@material/core/DialogActions';
-import DialogContent from '@material/core/DialogContent';
-import DialogContentText from '@material/core/DialogContentText';
-import DialogTitle from '@material/core/DialogTitle';
-import useMediaQuery from '@material/core/useMediaQuery';
-import { useTheme } from '@material/core/styles';
+import * as React from 'react'
+import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
 
-export default function ResponsiveDialog({dialogo, setDialogo, handleDelete, item}) {
-  //const [open, setOpen] = React.useState(false);
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
-  /* const handleClickOpen = () => {
-    setOpen(true);
-  }; */
-
-  const handleClose = () => {
-    setDialogo(false);
-  };
+export default function ResponsiveDialog({
+  open, 
+  onClose, 
+  onConfirm, 
+  item, 
+  title,
+  message
+}) {
+  
+  
 
   return (
-    <div>      
-      <Dialog
-        fullScreen={fullScreen}
-        open={dialogo}
-        onClose={handleClose}
+    <>
+      <Dialog        
+        open={open}
+        onClose={() => {onClose()}}
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          {"Tem certeza que deseja excluir esse cliente?"}
+          {title}
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Após confirmado não será possível reverter!
+            {message}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <button autoFocus onClick={handleClose}>
+          <Button autoFocus onClick={() => {onClose()}}>
             Cancelar
-          </button>
-          <button onClick={()=>{handleDelete(item)}} autoFocus>
+          </Button>
+          <Button onClick={()=>{onConfirm(item)}} autoFocus>
             Confirmar
-          </button>
+          </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </>      
   );
 }

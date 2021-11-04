@@ -2,7 +2,8 @@
     margin: 30px 15px;
     border-radius: 10%;
     box-shadow: 5px 5px 15px black;        
-    width:fit-content;       
+    width:fit-content;  
+    width: 300px;         
 }
 
 .cards .cardContent{

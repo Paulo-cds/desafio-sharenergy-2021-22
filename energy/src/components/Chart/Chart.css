@@ -1,0 +1,10 @@
+.containerChart{
+    background-color:#F8F8FF;
+    padding:20px;
+    text-align:center;
+    border-radius: 25px;
+    box-shadow: 15px 15px 20px rgb(44, 44, 44);  
+    max-width: 90%;
+    overflow:scroll;
+    overflow-y: hidden;
+}

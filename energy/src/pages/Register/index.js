@@ -3,9 +3,9 @@ import TextField from '@material-ui/core/TextField';
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import Form from '../../components/Form';
-import {
-    useHistory,
-  } from 'react-router-dom'
+import Alert from '../../components/Alert'
+import './Register.css'
+import {useHistory} from 'react-router-dom'
 
 
 
@@ -14,6 +14,7 @@ const Register = (clients) => {
     const history = useHistory()
     const [id, setId] = useState()
     const [newId, setNewId] = useState([])
+    const [openAlert, setAlert] = useState(false)
 
     useEffect(() => {
         axios.get (`${process.env.REACT_APP_API}`)
@@ -66,42 +67,91 @@ const Register = (clients) => {
     }
 
     const handleRegister = () => {      
+
+        let hasError = false
+
+        let newFormState = {
+            ...form,
+        }
+
+
+        if(!form.name.value){
+            hasError = true
+
+            newFormState.name = {
+                value: form.name.value,
+                error: true,
+                helperText: 'Digite o nome corretamente'
+            }
+        }
+
+        if(!form.usinasId.value){
+            hasError = true
+
+            newFormState.usinasId = {
+                value: form.usinasId.value,
+                error: true,
+                helperText: 'Digite o id da usina corretamente'
+            }
+        }
+
+        if(!form.usinasPercent.value){
+            hasError = true
+
+            newFormState.usinasPercent = {
+                value: form.usinasPercent.value,
+                error: true,
+                helperText: 'Digite o percentual corretamente'
+            }
+        }
        
         
-        axios.post (`${process.env.REACT_APP_API}`,{
-            id:id,
-            numeroCliente: id,
-            nomeCliente: form.name.value,
-            usinas: 
-            [
-                {
-                    usinaId: parseInt(form.usinasId.value),
-                    percentualDeParticipacao: parseInt(form.usinasPercent.value)
-                }
-            ]
-        })
-        .then((res) => {
-            history.push('/')
-        })
-        .catch((err) => {
-            console.log(err)            
-        })  
+        if(hasError) {
+            setForm(newFormState)
+        } else{
+            axios.post (`${process.env.REACT_APP_API}`,{
+                id:id,
+                numeroCliente: id,
+                nomeCliente: form.name.value,
+                usinas: 
+                [
+                    {
+                        usinaId: parseInt(form.usinasId.value),
+                        percentualDeParticipacao: parseInt(form.usinasPercent.value)
+                    }
+                ]
+            })
+            .then((res) => {
+                setAlert(true)                                   
+            })
+            .then((res) => {  
+                setTimeout(() => {
+                    history.push('/')
+                }, 2000);                       
+            })
+            .catch((err) => {
+                console.log(err)            
+            }) 
+        } 
     }             
     
 
-    return(
-       
-        
-        <Form 
-            url={`${process.env.REACT_APP_API}`}
-            id={id}
-            
-            form={form}
-            setForm={setForm}
-            input={handleInputChange}
-            handle={handleRegister}
-        />
-        
+    return(   
+        <div style={{paddingBottom: '10rem'}}>         
+            <div className='headRegister'></div>   
+            <Form                               
+                form={form}                
+                input={handleInputChange}
+                handle={handleRegister}
+            />
+            <Alert
+                openAlert={openAlert}
+                setAlert={setAlert}
+                severity={'success'}
+                title={'Sucesso!'}
+                message='Cliente adicionado!'
+            /> 
+        </div>
     )
 }
 

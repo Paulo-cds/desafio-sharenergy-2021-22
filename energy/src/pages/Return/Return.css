@@ -1,0 +1,66 @@
+.headReturn{
+    width: 100%;
+    height: 20rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url('https://cdnstatic8.com/infinitysun.com.br/wp-content/uploads/2018/01/Investimento-em-energia-solar-gera-economia-financeira-e-ajuda-o-meio-ambiente.jpg');
+}
+
+.boxFormReturn{
+    width: 50%;
+    text-align: center;
+    margin: 0 auto ;  
+    padding: 5rem 0;
+}
+
+@media(max-width: 768px){
+    .boxFormReturn{
+        width: 100%;
+    }
+}
+
+.boxFormReturn .form{
+    background-color: rgba(64, 115, 163, 0.267);
+    width:80%;
+    height: 400px;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 10%;
+    box-shadow: 0 0 20px rgba(151, 150, 150, 0.377);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 5px 5px 15px black; 
+}
+
+.cardClient{    
+    border-radius: 10%;
+    box-shadow: 5px 5px 15px black;             
+    width: 30%;     
+    margin: 0 auto;
+    margin: 10rem auto 0;
+}
+
+@media(max-width: 768px){
+    .cardClient{
+        width: 90%;
+    }
+}
+
+.cardClient .cardContent{
+    background-color:rgba(64, 115, 163, 0.267);
+    border-radius: 10%;
+    padding: 1rem;    
+    text-align: center;  
+}
+
+.cardClient .cardContent .cardTypography{
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.cardClient .cardContent .cardButton{    
+    margin-top: 15px;
+}

@@ -1,100 +1,119 @@
-import axios from 'axios'
-import './Home.css';
-import {useEffect, useState} from 'react'
+import './Home.css'
+import React, {useState} from 'react'
+import Box from '@material-ui/core/Box'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
-import Button from '@material-ui/core/Button';
-import {
-  useHistory,
-} from 'react-router-dom'
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import EditIcon from '@material-ui/icons/Edit';
-import * as React from 'react';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Alert from '../../components/Alert'
-import CardClient from '../../components/Card'
+
 
 const Home = () => {
-  const [client, setClient] = useState([])
-  const [qtdClients, setQtdClients] = useState()
-  const history = useHistory()
-  const [alertRes, setAlertRes] = useState(false)
-
-  useEffect(() => {
-    axios.get (`${process.env.REACT_APP_API}`)
-    .then(response => {
-      setClient(response.data)        
-      setQtdClients(response.data.length)    
-    })     
-    
-  }, [])
-  
-
-  const newClient = () => {
-    history.push('/register')  
-  }
-
-  const handleDelete = (id) => {
-    axios.delete (`${process.env.REACT_APP_API}/${id}`)
-      .then(response => {
-             
-        axios.get (`${process.env.REACT_APP_API}`)
-        .then(response => {
-          setClient(response.data)  
-          setQtdClients(response.data.length)    
-        })   
-      
-      })
-      .then( () => {
-        handleAlert()
-      })
-      .catch((err) => {
-        
-      }) 
-  }
-
-  const handleAlert = () => {
-    console.log('Abriu alerta')
-    setAlertRes(true)
-  }
-  
-
-  const handleEdit = (id) => {
-    history.push(`edit/${id}`)
-  }
-
-
-  const setCard = () => {
-    
-    if(client) {
-      return (
-        client.map((item) =>                      
-          <CardClient 
-            item={item}
-            handleDelete={handleDelete}
-            handleEdit={handleEdit}
-          />
-        )              
-      )
+  const admin = localStorage.getItem("token")
+  const [form, setForm] = useState({
+    name:{
+        value:'',
+        error: false,
+    },
+    password:{
+        value:'',
+        error: false,
     }
+  })
+
+  const handleInputChange = (e) => {
+    const {name, value} = e.target
+    console.log(e.target.value)
+
+    setForm({
+        ...form,
+        [name]: {
+            value,
+        },
+    })
   }
 
-  
+  const handleLogin = () => { 
+    let hasError = false
+
+    let newFormState = {
+        ...form,
+    }
+
+
+    if(!form.name.value){
+        hasError = true
+
+        newFormState.name = {
+            value: form.name.value,
+            error: true,
+            helperText: 'Digite o nome'
+        }
+    }
+
+    if(!form.password.value){
+        hasError = true
+
+        newFormState.password = {
+            value: form.password.value,
+            error: true,
+            helperText: 'Digite a senha'
+        }
+    }
+   
+    
+    if(hasError) {
+        setForm(newFormState)
+    } else{                  
+      if(form.name.value === process.env.REACT_APP_ADMIN && form.password.value === process.env.REACT_APP_PASSWORD){
+        localStorage.setItem("token","admin") 
+        window.location.reload();       
+      } else {
+        setForm(newFormState)
+      }
+    }
+}
+
+
   
   return (
     <div className="home">      
-      <Button onClick={newClient} 
-        variant="contained" className='buttonAdd' color='primary'>
-        Adicionar cliente
-      </Button>                
-      <div className='containerCards'>               
-        {setCard()}      
-      </div>
-      <Alert message='Cliente excluído com sucesso' res={alertRes}/>
+      <img src='https://files.openstartups.net/uploaded/startupLogos/5a1dbe64b96b57f4f95d363d/logo%20Sharenergy-01.png' />          
+      {!admin ?            
+        <div className='formLogin'>
+          <Box margin='15px auto' width='60%'>            
+            <TextField        
+              fullWidth='true'         
+              label="User:" 
+              variant="filled" 
+              name = 'name' 
+              error = {form.name.error}                     
+              onChange={handleInputChange}
+              required
+            />
+          </Box> 
+          <Box margin='15px auto' width='60%'>
+            <TextField        
+              fullWidth='true'          
+              label="Senha:" 
+              variant="filled" 
+              name = 'password' 
+              error = {form.password.error}                        
+              onChange={handleInputChange}
+              required
+            />
+          </Box>                
+            <Box margin='15px auto' width='60%'>
+              <Button 
+                onClick={handleLogin} 
+                variant="contained" 
+                color='primary'                                                 
+              >
+                Entrar
+            </Button>
+          </Box>                  
+        </div>  
+      : ''}
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

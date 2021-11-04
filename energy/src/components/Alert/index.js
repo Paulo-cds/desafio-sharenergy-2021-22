@@ -1,29 +1,47 @@
-import { useState } from 'react';
-import Alert from '@material-ui/lab/Alert';
-import Snackbar from '@material-ui/lab/Alert';
+import * as React from 'react';
+import {
+  Button,
+  Snackbar,
+  IconButton,  
+} from '@material-ui/core'
+import CloseIcon from '@material-ui/icons/Close';
 
-
-const SetAlert = ({message,res}) => {    
-    console.log('res = ', res)
-    const [open,setOpen] = useState(true)
+export default function SimpleSnackbar({openAlert, setAlert, title, severity, message}) {
   
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
 
-    setOpen(false);
-  }
-  return (        
-    <Snackbar 
-        anchorOrigin={{ 'bottom': 'left' }}
-        open={res} 
-        autoHideDuration={6000} 
+  const handleClose = () => {
+    setAlert(false);
+  };
+
+
+  const action = (
+    <React.Fragment>
+      <Button style={{color: "#ADFF2F"}} size="small" onClick={handleClose} >
+        {title}
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
+
+  return (
+    <>
+      <Snackbar        
+        open={openAlert}
+        autoHideDuration={5000}
         onClose={handleClose}
         message={message}
-    />
-        
+        action={action}
+        severity={severity}        
+        anchorOrigin={{vertical: 'bottom',
+        horizontal: 'left'}}       
+      />
+    </>
   );
 }
-
-export default SetAlert

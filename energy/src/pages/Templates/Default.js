@@ -1,23 +1,30 @@
 
 import Container from '@material-ui/core/Container'
 import './Template.css'
-import Header from '../../components/Header/index.js'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 
 
 
 
 
-
-const Default = ({children}) => {
+const Default = ({children, theme}) => {
     
     return(
         <div>
             <Header/>
-                {/* <Head/> */}
-            <Container className='container' style={{padding: 0, minHeight: '100vh'}} maxWidth="false">
-                {children}
+            <Container
+                className='container'
+                maxWidth='false'
+                style={{
+                    backgroundColor:'theme.palette.background',
+                    width:'100%',                                
+                }}
+                minHeight='100vh'
+            >
+               {children}                
             </Container>            
-            {/* <Footer/> */}
+            <Footer/>
         </div>
     )
 }

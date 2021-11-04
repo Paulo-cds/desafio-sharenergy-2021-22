@@ -1,74 +1,63 @@
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import {useState, useEffect} from 'react'
-import axios from 'axios'
 import './Form.css'
 
 
 
-const Form = ({
-    url,
-    id,
-    setNumber,
-    form,
-    setForm,
+const Form = ({   
+    form,    
     input,
-    handle
+    handle,
 }) => {
-   
-   useEffect(() => {
-        axios.get (`${url.url}`)
-        .then(response => {
-        const data = (response.data)  
-        setForm({
-            name: {value: data.name},
-            usinasId: {value: data.usinas.usinaId},
-            usinasPercent: {value: data.usinas.percentualDeParticipacao}
-        })  
-        setNumber(setNumber ? data.numeroCliente : response.data.length+1)
-        console.log('Fez o effect')
-        })             
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-                 
-    
-
+                      
     return(               
         <div className='boxForm'>
             <div className='form'>
-                <Box margin='15px'>            
-                    <TextField                 
+                <Box margin='15px auto' width='80%'>            
+                    <TextField        
+                        fullWidth='true'         
                         label="Nome:" 
                         variant="filled" 
-                        name = 'name'
-                        
+                        name = 'name' 
+                        error = {form.name.error}                     
                         onChange={input}
+                        required
                     />
                 </Box> 
-                <Box margin='15px'>
-                    <TextField                 
+                <Box margin='15px auto' width='80%'>
+                    <TextField        
+                        fullWidth='true'          
                         label="Id da Usina:" 
                         variant="filled" 
-                        name = 'usinasId'
-                        
+                        name = 'usinasId' 
+                        error = {form.usinasId.error}                        
                         onChange={input}
+                        required
                     />
                 </Box>
-                <Box margin='15px'>
-                    <TextField                 
+                <Box margin='15px auto' width='80%'>
+                    <TextField       
+                        fullWidth='true'           
                         label="Porcentagem da Usina:" 
                         variant="filled" 
-                        name = 'usinasPercent'
-                        
+                        name = 'usinasPercent' 
+                        error = {form.usinasPercent.error}                        
                         onChange={input}
+                        required
                     />
                 </Box>
-                <Button onClick={handle} variant="contained" color='primary'>
-                    Enviar
-                </Button>
-            </div>
-            
+                <Box margin='15px auto' width='60%'>
+                    <Button 
+                        onClick={handle} 
+                        variant="contained" 
+                        color='primary' 
+                        fullWidth='true'                        
+                    >
+                        Enviar
+                    </Button>
+                </Box>
+            </div>            
         </div>               
     )
 }

@@ -1,7 +1,9 @@
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Typography
+} from '@material-ui/core'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 import './Card.css'
@@ -9,8 +11,15 @@ import {useState} from 'react'
 import Dialog from '../Dialog'
 
 
+
 const CardClient = ({item, handleDelete, handleEdit}) => {
-    const [dialogo, setDialogo] = useState(false)
+    const [open, setOpen] = useState(false)
+    
+
+    const handleClose = () => {
+      setOpen(false)
+    };
+
     return(
         <div className='cards'>
             <Card className='cardContent' sx={{ minWidth: 275 }}>
@@ -26,18 +35,24 @@ const CardClient = ({item, handleDelete, handleEdit}) => {
                   </Typography>
                   <Typography className='cardTypography'>
                     Percentual: {item.usinas[0].percentualDeParticipacao}
-                  </Typography>
-                
+                  </Typography>                
               </CardContent>
               <CardActions>
                 <div className='actions'>
-                  <DeleteForeverIcon className='icons' onClick={()=>{setDialogo(true)}} />
+                  <DeleteForeverIcon className='icons' onClick={()=>{setOpen(true)}} />
                   <EditIcon className='icons' onClick={()=>{handleEdit(item.id)}}/>                
                 </div>
               </CardActions>
             </Card>   
-
-            <Dialog dialogo={dialogo} setDialogo={setDialogo} handleDelete={handleDelete} item={item.id}/>
+            <Dialog 
+              open={open} 
+              setOpen={setOpen} 
+              onConfirm={handleDelete} 
+              item={item.id}
+              title={"Tem certeza que deseja excluir esse cliente?"}
+              message={'Após confirmado não será possível reverter!'}
+              onClose={handleClose}
+            />            
           </div>
     )
 }
