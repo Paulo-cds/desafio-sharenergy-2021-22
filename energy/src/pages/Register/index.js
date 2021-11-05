@@ -1,3 +1,5 @@
+import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField';
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import Form from '../../components/Form';
@@ -6,13 +8,13 @@ import './Register.css'
 import {useHistory} from 'react-router-dom'
 
 
-const Register = () => {
+
+const Register = (clients) => {
     const [qtdClients, setQtdClients] = useState()
     const history = useHistory()
     const [id, setId] = useState()
     const [newId, setNewId] = useState([])
     const [openAlert, setAlert] = useState(false)
-    
 
     useEffect(() => {
         axios.get (`${process.env.REACT_APP_API}`)
@@ -70,8 +72,8 @@ const Register = () => {
 
         let newFormState = {
             ...form,
-        }     
-        
+        }
+
 
         if(!form.name.value){
             hasError = true
@@ -124,8 +126,8 @@ const Register = () => {
             })
             .then((res) => {  
                 setTimeout(() => {
-                    window.location.reload()
-                }, 1000);            
+                    history.push('/')
+                }, 2000);                       
             })
             .catch((err) => {
                 console.log(err)            

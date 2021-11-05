@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
 
+
 const Home = () => {
   const admin = localStorage.getItem("token")
   const [form, setForm] = useState({
@@ -19,7 +20,8 @@ const Home = () => {
   })
 
   const handleInputChange = (e) => {
-    const {name, value} = e.target    
+    const {name, value} = e.target
+    console.log(e.target.value)
 
     setForm({
         ...form,
@@ -69,6 +71,7 @@ const Home = () => {
       }
     }
 }
+
 
   
   return (

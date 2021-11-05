@@ -1,6 +1,6 @@
 import Home from './pages/Home'
 import './App.css';
-import React from 'react'
+import React, { Component } from 'react'
 import Register from './pages/Register'
 import Edit from './pages/Edit'
 import Clients from './pages/Clients'
@@ -39,12 +39,18 @@ function App() {
       <TemplateDefault> 
         <ThemeProvider theme={theme}>       
           <Switch>
-            <PrivateRoute path='/return' component={Return}/>             
-            <PrivateRoute path='/grafics' component={Grafics}/>              
-            <PrivateRoute path='/clients' component={Clients}/>              
-            <PrivateRoute path='/register' component={Register}/>              
-            <PrivateRoute path="/edit/:id" component={Edit}/>              
-            <Route path="/" component={Home}/>                   
+            <PrivateRoute path='/return' component={Return}/>
+             
+            <PrivateRoute path='/grafics' component={Grafics}/>
+              
+            <PrivateRoute path='/clients' component={Clients}/>
+              
+            <PrivateRoute path='/register' component={Register}/>
+              
+            <PrivateRoute path="/edit/:id" component={Edit}/>
+              
+            <Route path="/" component={Home}/>
+                   
           </Switch>  
         </ThemeProvider>      
       </TemplateDefault>

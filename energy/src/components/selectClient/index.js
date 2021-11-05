@@ -1,11 +1,21 @@
 import Box from '@material-ui/core/Box'
+import TextField from '@material-ui/core/TextField'
+import Autocomplete from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
+import InputLabel from '@material-ui/core/Select'
+import FormControl from '@material-ui/core/Select'
 
 
 
-const SelectClient = ({client, handleInputChange, form, handleCalc, dataUsina}) => { 
+const SelectClient = ({client, handleInputChange, form, handleCalc, dataUsina}) => {
+
+    const defaultProps = {
+        options: client,
+        getOptionLabel: (option) => option.nomeCliente,
+    }    
+
     return(
         <div className='boxFormReturn'>
             <div className='form' >                

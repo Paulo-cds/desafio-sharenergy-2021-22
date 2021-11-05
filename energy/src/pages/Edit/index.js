@@ -1,3 +1,5 @@
+import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField';
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import { useParams, useHistory} from 'react-router-dom'
@@ -40,10 +42,14 @@ const Edit = () => {
             error: false,
         },
         
-    })       
+    })
+    
+   
 
     const handleInputChange = (e) => {
-        const {name, value} = e.target        
+        const {name, value} = e.target
+        
+
         setForm({
             ...form,
             [name]: {
@@ -113,8 +119,8 @@ const Edit = () => {
             })
             .then((res) => {  
                 setTimeout(() => {
-                    history.push('/clients')
-                }, 1000);                       
+                    history.push('/')
+                }, 2000);                       
             })
             .catch((err) => {
                 console.log(err)
