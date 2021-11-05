@@ -1,8 +1,6 @@
-import Box from '@material-ui/core/Box';
-import TextField from '@material-ui/core/TextField';
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import Form from '../../components/Form';
+import Form from '../../components/Form'
 import Alert from '../../components/Alert'
 import './Register.css'
 import {useHistory} from 'react-router-dom'
@@ -126,8 +124,8 @@ const Register = (clients) => {
             })
             .then((res) => {  
                 setTimeout(() => {
-                    history.push('/')
-                }, 2000);                       
+                    window.location.reload()
+                }, 1000);                       
             })
             .catch((err) => {
                 console.log(err)            

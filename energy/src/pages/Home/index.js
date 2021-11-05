@@ -20,8 +20,7 @@ const Home = () => {
   })
 
   const handleInputChange = (e) => {
-    const {name, value} = e.target
-    console.log(e.target.value)
+    const {name, value} = e.target   
 
     setForm({
         ...form,

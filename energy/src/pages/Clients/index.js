@@ -28,10 +28,6 @@ const Home = () => {
   }, [])
  
 
-  const newClient = () => {
-    history.push('/register')  
-  }
-
   const handleDelete = (id) => {
     axios.delete (`${process.env.REACT_APP_API}/${id}`)
       .then(response => {             

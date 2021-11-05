@@ -42,8 +42,7 @@ const Return = () => {
     
 
     const handleInputChange = (e) => {
-        const {name, value} = e.target        
-        console.log(e.target, e.target.value)
+        const {name, value} = e.target                
         setForm({
             ...form,
             [name]: {
@@ -66,11 +65,8 @@ const Return = () => {
         }                
         const tempo = result/control
         const energiaT = tempo * kw
-        const receitaDia = energiaT * 0.95        
-        console.log('tempo = ', tempo, 'potencia = ', kw, 'energiaT = ', energiaT,
-        'receitaDia = ', receitaDia)        
-        setValorCliente((percentualCliente[0].usinas[0].percentualDeParticipacao/100)*receitaDia)
-        console.log('Valor cliente = ', valorCliente)
+        const receitaDia = energiaT * 0.95                      
+        setValorCliente((percentualCliente[0].usinas[0].percentualDeParticipacao/100)*receitaDia)        
     }
 
     
