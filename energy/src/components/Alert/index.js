@@ -34,7 +34,7 @@ export default function SimpleSnackbar({openAlert, setAlert, title, severity, me
     <>
       <Snackbar        
         open={openAlert}
-        autoHideDuration={5000}
+        autoHideDuration={3000}
         onClose={handleClose}
         message={message}
         action={action}

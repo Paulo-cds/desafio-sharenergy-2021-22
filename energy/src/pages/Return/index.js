@@ -3,10 +3,12 @@ import axios from 'axios'
 import {useEffect, useState} from 'react'
 import SelectClient from '../../components/selectClient'
 import dataUsina from '../../dadosUsina.json'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
+import {
+    Card,
+    CardContent,
+    Typography,
+    Button
+} from '@material-ui/core'
 import './Return.css'
 
 
@@ -42,8 +44,7 @@ const Return = () => {
     
 
     const handleInputChange = (e) => {
-        const {name, value} = e.target        
-        console.log(e.target, e.target.value)
+        const {name, value} = e.target                
         setForm({
             ...form,
             [name]: {
@@ -66,15 +67,10 @@ const Return = () => {
         }                
         const tempo = result/control
         const energiaT = tempo * kw
-        const receitaDia = energiaT * 0.95        
-        console.log('tempo = ', tempo, 'potencia = ', kw, 'energiaT = ', energiaT,
-        'receitaDia = ', receitaDia)        
-        setValorCliente((percentualCliente[0].usinas[0].percentualDeParticipacao/100)*receitaDia)
-        console.log('Valor cliente = ', valorCliente)
+        const receitaDia = energiaT * 0.95           
+        setValorCliente((percentualCliente[0].usinas[0].percentualDeParticipacao/100)*receitaDia)        
     }
-
     
-
     return(
         <>
             <div className='headReturn'></div>

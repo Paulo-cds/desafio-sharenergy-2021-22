@@ -4,8 +4,8 @@ import {
   CardContent,
   Typography
 } from '@material-ui/core'
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import EditIcon from '@material-ui/icons/Edit';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+import EditIcon from '@material-ui/icons/Edit'
 import './Card.css'
 import {useState} from 'react'
 import Dialog from '../Dialog'
