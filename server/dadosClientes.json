@@ -23,9 +23,9 @@
       ]
     },
     {
-      "id": 342,
-      "numeroCliente": 342,
-      "nomeCliente": "Ciclano",
+      "id": 344,
+      "nomeCliente": "Paulo",
+      "numeroCliente": 344,
       "usinas": [
         {
           "usinaId": 3,
