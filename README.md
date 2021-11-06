@@ -1,3 +1,22 @@
+# Link vídeo
+https://youtu.be/SLYsJCwMWXQ
+
+Me desculpem pela qualidade do aúdio.
+
+# Dependências e instalação
+
+Para simular o backend foi utilizado o json-server para gerir os dados dos clientes.
+Para instalar as dependências deve ser dado o camando yarn ou npm install dentro do diretório server para o backend e também dentro do diretório energy para o frontend.
+Para executar a aplicação, o backend roda com o comando yarn server dentro do diretório server, o frontend roda com o comando yarn start dentro do diretório energy.
+
+# Login
+Usuário: sharenergy
+Senha: sharenergy2021
+
+REACT_APP_API='http://localhost:5000/data'
+REACT_APP_ADMIN='sharenergy'
+REACT_APP_PASSWORD='sharenergy2021'
+
 # Desafio para processo seletivo SHARENERGY 2021/22
 
 Esse repositório se destina aos interessados em participar do processo seletivo da SHARENERGY 2021/22. As vagas são voltadas para desenvolvedores de aplicativos Web.
